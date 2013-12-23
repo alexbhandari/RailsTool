@@ -6,7 +6,7 @@ use diagnostics;
 use Cwd 'abs_path';
 my $name = $ARGV[0];
 my $script_path = abs_path();
-my %copy_files = ("Gemfile",".");
+my %copy_files = ("Gemfile"=>".");
 
 #print pre-run information
 print "\033[32m";
@@ -43,13 +43,17 @@ system("clear");
 print "run: clear\n";
 foreach (@commands) {
    print "run: $_\n";
-   #system($_);
+   system($_);
+   if($_ eq "rails new $name") {
+      print "chdir $name\n";
+      chdir $name;
+   }
 }
 #add git and heroku
 print "\033[33mInitialize a git repo with heroku? [yes/no]\n\033[0m";
 if (<STDIN> eq "yes\n") {
    foreach (@git_init) {
       print "run: $_\n";
-      #system($_);
+      system($_);
    }
 }
