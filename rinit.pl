@@ -30,7 +30,7 @@ exit 0 if !(<STDIN> eq "\n");
 #copy template files: all stored in files subdirectory
 my @commands = ("rails new $name","cd $name");
 my @git_init = ("git init","touch README", "git add .", "git commit -m 'initialized using rails script'",
-                'git remote add origin git@github.com:alexbhandari/'."$name.git", "git push -u origin master", 
+                'git remote add origin git@github.com:alexbhandari/'."$name.git", "git push -u origin master",
                 "heroku create");
 while (my($file, $loc) = each %copy_files) {
    #add copy params
